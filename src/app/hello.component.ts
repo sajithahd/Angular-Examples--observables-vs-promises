@@ -68,5 +68,14 @@ export class HelloComponent {
         this.greetingLadyContent += "Done with greeting leady <br/>";
       }
     });
+
+    // this.greetingLady.subscribe(
+    //   value => {
+    //     this.greetingLadyContent += value;
+    //   },
+    //   () => {
+    //     this.greetingLadyContent += "Done with greeting leady <br/>";
+    //   }
+    // );
   }
 }

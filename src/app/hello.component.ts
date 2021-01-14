@@ -58,5 +58,12 @@ export class HelloComponent {
     });
 
     this.greetingLadyContent += "Before calling subscribe <br/>";
+
+    this.greetingLady.subscribe({
+      next: console.log,
+      complete: () => {
+         this.greetingLadyContent += "Done with greeting leady <br/>";
+      }
+    });
   }
 }

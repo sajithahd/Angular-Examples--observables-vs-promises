@@ -51,18 +51,18 @@ export class HelloComponent {
   observable() {
     this.greetingLady = new Observable(observer => {
       this.greetingLadyContent += "Inside obervable <br/>";
-      observer.next(
-        (this.greetingLadyContent += "WelCome Sajitha Observer <br/>")
-      );
+      observer.next("WelCome Sajitha Observer <br/>");
       observer.complete();
     });
 
     this.greetingLadyContent += "Before calling subscribe <br/>";
 
     this.greetingLady.subscribe({
-      next: console.log,
+      next: value => {
+        this.greetingLadyContent += value;
+      },
       complete: () => {
-         this.greetingLadyContent += "Done with greeting leady <br/>";
+        this.greetingLadyContent += "Done with greeting leady <br/>";
       }
     });
   }

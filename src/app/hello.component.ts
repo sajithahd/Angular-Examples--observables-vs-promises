@@ -1,9 +1,11 @@
 import { Component, Input } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "hello",
   template: `
     <h1>Hello {{ name }}!</h1>
+    <span [innerHtml]="greetingPostContent"></span>
   `,
   styles: [
     `
@@ -17,20 +19,31 @@ export class HelloComponent {
   @Input() name: string;
 
   greetingPoster: Promise<any>;
+  greetingPostContent: string = "";
+  greetingLady: Observable<any>;
 
   constructor() {
+    this.promise();
+    this.observable();
+  }
+
+  observable() {
+    //throw new Error("Method not implemented.");
+  }
+
+  promise() {
     // Promise body will run eagerly. just at the creation
     this.greetingPoster = new Promise((resolve, reject) => {
-      console.log("Inside the promise");
+      this.greetingPostContent += " Inside the promise. ";
       resolve("Welcom, Sajitha");
     });
 
-    // this will call before then
-    console.log("Before calling then on Promise");
+    // This will call before then
+    this.greetingPostContent += " Before calling then on Promise. ";
 
-    // then will be triggered at last
+    // Then will be triggered at last
     this.greetingPoster.then(res => {
-      console.log(`Inside then, Greeting from Promise: ${res}`);
+      this.greetingPostContent += ` Inside then, Greeting from Promise: ${res} `;
     });
   }
 }

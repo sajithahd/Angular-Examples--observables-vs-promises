@@ -49,14 +49,17 @@ export class HelloComponent {
   }
 
   observable() {
+    // Once subcrption triggered only observer call back function will be executed
     this.greetingLady = new Observable(observer => {
       this.greetingLadyContent += "Inside obervable <br/>";
       observer.next("WelCome Sajitha Observer <br/>");
       observer.complete();
     });
 
+    // This line will be displayed first
     this.greetingLadyContent += "Before calling subscribe <br/>";
 
+    // Once subscription triggered it will retrun here
     this.greetingLady.subscribe({
       next: value => {
         this.greetingLadyContent += value;

@@ -34,16 +34,16 @@ export class HelloComponent {
   promise() {
     // Promise body will run eagerly. just at the creation
     this.greetingPoster = new Promise((resolve, reject) => {
-      this.greetingPostContent += " Inside the promise. \n";
+      this.greetingPostContent += " Inside the promise. <br/>";
       resolve("Welcom, Sajitha");
     });
 
     // This will call before then
-    this.greetingPostContent += " Before calling then on Promise. ";
+    this.greetingPostContent += " Before calling then on Promise. <br/>";
 
     // Then will be triggered at last
     this.greetingPoster.then(res => {
-      this.greetingPostContent += ` Inside then, Greeting from Promise: ${res} `;
+      this.greetingPostContent += ` Inside then, Greeting from Promise: ${res} <br/>`;
     });
   }
 }

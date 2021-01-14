@@ -55,8 +55,10 @@ export class HelloComponent {
       this.greetingLadyContent += "Inside obervable <br/>";
       observer.next("WelCome Sajitha Observer <br/>");
       observer.complete();
-    }).pipe(map(v => (v += "pipe <br/>")));
+    }).pipe(map(v => (v += "Insde Pipe <br/>")));
+
     // observable.pipe(map(v => 2 * v));
+    // observable.pipe(mapTo('this will be retrun instead of source obervable content'))
 
     // This line will be displayed first
     this.greetingLadyContent += "Before calling subscribe <br/>";

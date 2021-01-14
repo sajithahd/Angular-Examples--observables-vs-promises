@@ -79,7 +79,7 @@ export class HelloComponent {
     subscription.unsubscribe();
 
     // Observables are synchrones or asynchrones
-    this.greetingPostContent += " After subscription block. <br/>";
+    this.greetingLadyContent += " After subscription block. <br/>";
 
     // this.greetingLady.subscribe(
     //   value => {

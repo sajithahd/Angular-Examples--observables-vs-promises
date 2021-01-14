@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "hello",
@@ -54,7 +55,8 @@ export class HelloComponent {
       this.greetingLadyContent += "Inside obervable <br/>";
       observer.next("WelCome Sajitha Observer <br/>");
       observer.complete();
-    });
+    }).pipe(map(v => (v += "pipe <br/>")));
+    // observable.pipe(map(v => 2 * v));
 
     // This line will be displayed first
     this.greetingLadyContent += "Before calling subscribe <br/>";

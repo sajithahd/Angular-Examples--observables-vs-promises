@@ -34,7 +34,7 @@ export class HelloComponent {
   promise() {
     // Promise body will run eagerly. just at the creation
     this.greetingPoster = new Promise((resolve, reject) => {
-      this.greetingPostContent += " Inside the promise. ";
+      this.greetingPostContent += " Inside the promise. \n";
       resolve("Welcom, Sajitha");
     });
 

@@ -5,7 +5,11 @@ import { Observable } from "rxjs";
   selector: "hello",
   template: `
     <h1>Hello {{ name }}!</h1>
+    Promises<br />
     <span [innerHtml]="greetingPostContent"></span>
+    <br />
+    Observable<br />
+    <span [innerHtml]="greetingLadyContent"></span>
   `,
   styles: [
     `
@@ -21,14 +25,11 @@ export class HelloComponent {
   greetingPoster: Promise<any>;
   greetingPostContent: string = "";
   greetingLady: Observable<any>;
+  greetingLadyContent: string = "";
 
   constructor() {
     this.promise();
     this.observable();
-  }
-
-  observable() {
-    //throw new Error("Method not implemented.");
   }
 
   promise() {
@@ -45,5 +46,17 @@ export class HelloComponent {
     this.greetingPoster.then(res => {
       this.greetingPostContent += ` Inside then, Greeting from Promise: ${res} <br/>`;
     });
+  }
+
+  observable() {
+    this.greetingLady = new Observable(observer => {
+      this.greetingLadyContent += "Inside obervable <br/>";
+      observer.next(
+        (this.greetingLadyContent += "WelCome Sajitha Observer <br/>")
+      );
+      observer.complete();
+    });
+
+    this.greetingLadyContent += "Before calling subscribe <br/>";
   }
 }

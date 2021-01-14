@@ -47,6 +47,9 @@ export class HelloComponent {
     this.greetingPoster.then(res => {
       this.greetingPostContent += ` Inside then, Greeting from Promise: ${res} <br/>`;
     });
+
+    // Promises are asynchrones
+    this.greetingPostContent += " After promise block. <br/>";
   }
 
   observable() {
@@ -74,6 +77,9 @@ export class HelloComponent {
     });
 
     subscription.unsubscribe();
+
+    // Observables are synchrones or asynchrones
+    this.greetingPostContent += " After subscription block. <br/>";
 
     // this.greetingLady.subscribe(
     //   value => {

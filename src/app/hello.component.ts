@@ -64,7 +64,7 @@ export class HelloComponent {
     this.greetingLadyContent += "Before calling subscribe <br/>";
 
     // Once subscription triggered it will retrun here
-    this.greetingLady.subscribe({
+    const subscription = this.greetingLady.subscribe({
       next: value => {
         this.greetingLadyContent += value;
       },
@@ -72,6 +72,8 @@ export class HelloComponent {
         this.greetingLadyContent += "Done with greeting leady <br/>";
       }
     });
+
+    subscription.unsubscribe();
 
     // this.greetingLady.subscribe(
     //   value => {

@@ -5,19 +5,16 @@ import { map } from "rxjs/operators";
 @Component({
   selector: "hello",
   template: `
-    <h1>{{ name }}!</h1>
     <h3>Promises</h3>
     <span [innerHtml]="promiseContent"></span>
     <br />
-    
+
     ===============================
     <h3>Observable</h3>
     <span [innerHtml]="observableContent"></span>
   `
 })
 export class HelloComponent {
-  @Input() name: string;
-
   promise: Promise<any>;
   promiseContent: string = "";
   observable: Observable<any>;

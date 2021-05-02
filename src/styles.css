@@ -6,14 +6,15 @@ h1 {
   color: #264d73;
   font-size: 2.5rem;
 }
-h2,
-h3 {
-  color: #444;
-  font-weight: lighter;
+h2 {
+  color: #264d73;
+  font-size: 1.8rem;
 }
 h3 {
+  color: #264d73;
   font-size: 1.3rem;
 }
+
 body {
   padding: 0.5rem;
   max-width: 1000px;
@@ -113,11 +114,13 @@ a {
 
 .back {
   background: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   text-decoration: underline;
-  color: #3f525c;
+  color: #fff;
+  background: #3f525c;
+  width: 60px;
+  padding: 8px 20px;
+  border-radius: 2px;
   text-align: left;
-  padding: none;
-  margin: none;
 }

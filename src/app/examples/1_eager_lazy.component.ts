@@ -14,7 +14,7 @@ import { map } from "rxjs/operators";
     <span [innerHtml]="promiseContent"></span>
     <br />
     ===============================
-    <h3>Observable</h3>
+    <h3>Observables</h3>
     <span [innerHtml]="observableContent"></span>
   `
 })

@@ -5,19 +5,23 @@ import { map } from "rxjs/operators";
 @Component({
   selector: "hello",
   template: `
-    <h3>Promises</h3>
+    <div class="menu">
+      <a routerLink="/eager">Eager vs Lazy
+      </a>
+    </div>
+    <h2>Promises</h2>
     <span [innerHtml]="promiseContent"></span>
     <br />
 
     ===============================
-    <h3>Observable</h3>
+    <h2>Observable</h2>
     <span [innerHtml]="observableContent"></span>
   `
 })
 export class HelloComponent {
-  promise: Promise<any>;
+  promise: Promise<string>;
   promiseContent: string = "";
-  observable: Observable<any>;
+  observable: Observable<string>;
   observableContent: string = "";
 
   constructor() {
@@ -26,55 +30,73 @@ export class HelloComponent {
   }
 
   promises() {
-    // Before Promis cretation
-    this.promiseContent += "1. Just Before promise creation. <br/>";
+    // Before Promise cretation
+    this.promiseContent += "1. Just Before the Promise creation. <br/>";
 
-    // Promise funtion passed through the constructor will be executed eagerly. Jjust at the time of creation
+    // Promise funtion passed through the constructor will be executed eagerly.
+    // Just at the time of creation
     this.promise = new Promise((resolve, reject) => {
-      this.promiseContent += "2. Inside the promise. <br/>";
-      resolve("6. Welcom, Sajitha");
+      this.promiseContent +=
+        "2. Promise created and now you are inside the Promise. <br/>";
+      resolve("5. 'Welcome, Sj' - This is the message by the Promise.");
     });
 
     // This will call before then
-    this.promiseContent += "3. Before calling then on Promise. <br/>";
+    this.promiseContent += "3. Before calling 'then' on Promise. <br/>";
 
-    // Then will be triggered at last
+    // 'Then' will be registered and queued but the callback executed later asynchronously
     this.promise.then(res => {
-      this.promiseContent += `5. Inside then, Greeting from Promise: ${res} <br/>`;
+      this.promiseContent += res + " <br/>";
+      this.promiseContent += `6. Inside 'then', Successfully retrieved 
+      messages from the Promise. <br/>`;
     });
 
     // Promises are asynchrones
-    this.promiseContent += "4. After the promise 'then' block. <br/>";
+    this.promiseContent += "4. After the Promise 'then' block. <br/>";
   }
 
   observables() {
     // Once subcrption triggered only observer call back function will be executed
     this.observable = new Observable(observer => {
-      this.observableContent += "Inside obervable <br/>";
-      observer.next("WelCome Sajitha Observer <br/>");
+      this.observableContent += "2. Inside obervable <br/>";
+      observer.next(
+        "3. 'WelCome Sj' - This is the message by the observable.<br/>"
+      );
       observer.complete();
-    }).pipe(map(v => (v += "Insde Pipe <br/>")));
+    }); //.pipe(map(v => (v += "4. Insde Pipe -  <br/>")));
 
     // observable.pipe(map(v => 2 * v));
     // observable.pipe(mapTo('this will be retrun instead of source obervable content'))
 
     // This line will be displayed first
-    this.observableContent += "Before calling subscribe <br/>";
+    this.observableContent += "1. Before calling subscribe <br/>";
 
     // Once subscription triggered it will retrun here
     const subscription = this.observable.subscribe({
       next: value => {
         this.observableContent += value;
+        this.observableContent +=
+          "4. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
       },
       complete: () => {
-        this.observableContent += "Done with greeting leady <br/>";
+        this.observableContent += "5. Done with the subscription <br/>";
       }
     });
 
+    const subscription2 = this.observable.subscribe({
+      next: value => {
+        this.observableContent += value;
+        this.observableContent +=
+          "4. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
+      },
+      complete: () => {
+        this.observableContent += "5. Done with the subscription <br/>";
+      }
+    });
     subscription.unsubscribe();
 
     // Observables are synchrones or asynchrones
-    this.observableContent += " After subscription block. <br/>";
+    this.observableContent += "6. After subscription block. <br/>";
 
     // this.greetingLady.subscribe(
     //   value => {

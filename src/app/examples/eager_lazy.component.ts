@@ -5,10 +5,7 @@ import { map } from "rxjs/operators";
 @Component({
   selector: "hello",
   template: `
-    <div class="menu">
-      <a routerLink="/eager">Eager vs Lazy
-      </a>
-    </div>
+    
     <h2>Promises</h2>
     <span [innerHtml]="promiseContent"></span>
     <br />

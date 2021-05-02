@@ -18,7 +18,7 @@ import { map } from "rxjs/operators";
     <span [innerHtml]="observableContent"></span>
   `
 })
-export class HelloComponent {
+export class EagerVsLazy{
   promise: Promise<string>;
   promiseContent: string = "";
   observable: Observable<string>;

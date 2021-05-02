@@ -6,7 +6,7 @@ import { map } from "rxjs/operators";
   selector: "eagerVsLazy",
   template: `
     <div class="back" routerLink="/">
-      Back
+      < Back
     </div>
     <h2>Promises</h2>
     <span [innerHtml]="promiseContent"></span>

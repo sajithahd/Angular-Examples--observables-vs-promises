@@ -106,8 +106,6 @@ a {
   width: 100%;
   min-width: 70px;
   margin: 0.5rem auto;
-
-  /* flexbox */
   order: 0;
   flex: 0 1 auto;
   align-self: auto;
@@ -116,7 +114,8 @@ a {
 .back {
   background: none;
   font-size: 1.2rem;
-
+  cursor: pointer;
+  text-decoration: underline;
   color: #3f525c;
   text-align: left;
   padding: none;

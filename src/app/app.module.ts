@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
 import { IndexComponent } from "./examples/index.component";
-import { EagerVsLazy } from "./examples/eager_lazy.component";
+import { EagerVsLazy } from "./examples/1_eager_lazy.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule],

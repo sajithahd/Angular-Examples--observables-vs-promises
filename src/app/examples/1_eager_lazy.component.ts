@@ -83,28 +83,9 @@ export class EagerVsLazy {
       }
     });
 
-    const subscription2 = this.observable.subscribe({
-      next: value => {
-        this.observableContent += value;
-        this.observableContent +=
-          "4. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
-      },
-      complete: () => {
-        this.observableContent += "5. Done with the subscription <br/>";
-      }
-    });
     subscription.unsubscribe();
 
     // Observables are synchrones or asynchrones
     this.observableContent += "6. After subscription block. <br/>";
-
-    // this.greetingLady.subscribe(
-    //   value => {
-    //     this.greetingLadyContent += value;
-    //   },
-    //   () => {
-    //     this.greetingLadyContent += "Done with greeting leady <br/>";
-    //   }
-    // );
   }
 }

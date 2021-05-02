@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "index", component: IndexComponent },
   { path: "eager_lazy", component: EagerVsLazy },
-  { path: "eager_lazy", component: EagerVsLazy }
+  { path: "single_multiple", component: EagerVsLazy }
 ];
 
 @NgModule({

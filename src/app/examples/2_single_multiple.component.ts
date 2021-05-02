@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
     <div class="back" routerLink="/">
       < Back
     </div>
-    <h2>Eager vs Lazy</h2>
+    <h2>Single Value vs Multiple Values</h2>
 
     <h3>Promises</h3>
     <span [innerHtml]="promiseContent"></span>

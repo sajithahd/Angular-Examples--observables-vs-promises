@@ -30,53 +30,40 @@ export class SingleVsMultiple {
   }
 
   promises() {
-    // Before Promise cretation
-    this.promiseContent += "1. Just Before the Promise creation. <br/>";
-
-    // Promise funtion passed through the constructor will be executed eagerly.
-    // Just at the time of creation
+    // Promise with multiple value resolves
     this.promise = new Promise((resolve, reject) => {
       this.promiseContent +=
-        "2. Promise created and now you are inside the Promise. <br/>";
-      resolve("5. 'Welcome, Sj' - This is the message by the Promise.");
-    });
+        "1. Promise created and now you are inside the Promise. <br/>";
 
-    // This will call before then
-    this.promiseContent += "3. Before calling 'then' on Promise. <br/>";
+      // 1st resolve
+      resolve("2. This is the first message by the Promise.");
+
+      //second resolve - This will never display
+      resolve("3. This is the second message by the Promise.");
+    });
 
     // 'Then' will be registered and queued but the callback executed later asynchronously
     this.promise.then(res => {
       this.promiseContent += res + " <br/>";
-      this.promiseContent += `6. Inside 'then', Successfully retrieved 
+      this.promiseContent += `4. Inside 'then', Successfully retrieved 
       messages from the Promise. <br/>`;
     });
-
-    // Promises are asynchrones
-    this.promiseContent += "4. After the Promise 'then' block. <br/>";
   }
 
   observables() {
     // Once subcrption triggered only observer call back function will be executed
     this.observable = new Observable(observer => {
-      this.observableContent += "2. Inside obervable <br/>";
-      observer.next(
-        "3. 'WelCome Sj' - This is the message by the observable.<br/>"
-      );
+      this.observableContent += "1. Inside obervable <br/>";
+      observer.next("2. This is the 1st message by the Observable.<br/>");
+      observer.next("3. This is the 2nd message by the Observable.<br/>");
       observer.complete();
-    }); //.pipe(map(v => (v += "4. Insde Pipe -  <br/>")));
+    });
 
-    // observable.pipe(map(v => 2 * v));
-    // observable.pipe(mapTo('this will be retrun instead of source obervable content'))
-
-    // This line will be displayed first
-    this.observableContent += "1. Before calling subscribe <br/>";
-
-    // Once subscription triggered it will retrun here
     const subscription = this.observable.subscribe({
       next: value => {
         this.observableContent += value;
         this.observableContent +=
-          "4. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
+          "4. Inside 'subscription', Successfully retrieved messages from the Observable. <br/></br>";
       },
       complete: () => {
         this.observableContent += "5. Done with the subscription <br/>";
@@ -84,8 +71,5 @@ export class SingleVsMultiple {
     });
 
     subscription.unsubscribe();
-
-    // Observables are synchrones or asynchrones
-    this.observableContent += "6. After subscription block. <br/>";
   }
 }

@@ -63,10 +63,7 @@ export class EagerVsLazy {
         "3. 'WelCome Sj' - This is the message by the observable.<br/>"
       );
       observer.complete();
-    }); //.pipe(map(v => (v += "4. Insde Pipe -  <br/>")));
-
-    // observable.pipe(map(v => 2 * v));
-    // observable.pipe(mapTo('this will be retrun instead of source obervable content'))
+    }); 
 
     // This line will be displayed first
     this.observableContent += "1. Before calling subscribe <br/>";

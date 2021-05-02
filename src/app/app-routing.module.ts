@@ -7,6 +7,7 @@ import { EagerVsLazy } from "./examples/1_eager_lazy.component";
 const routes: Routes = [
   { path: "", redirectTo: "/index", pathMatch: "full" },
   { path: "index", component: IndexComponent },
+  { path: "eager_lazy", component: EagerVsLazy },
   { path: "eager_lazy", component: EagerVsLazy }
 ];
 

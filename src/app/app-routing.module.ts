@@ -5,10 +5,8 @@ import { EagerVsLazy } from './examples/eager_lazy.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes', component: HeroesComponent }
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'eager_Lazy', component: EagerVsLazy }
 ];
 
 @NgModule({

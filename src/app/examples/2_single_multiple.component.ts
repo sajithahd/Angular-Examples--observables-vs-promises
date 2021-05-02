@@ -42,7 +42,7 @@ export class SingleVsMultiple {
       resolve("3. This is the second message by the Promise.");
     });
 
-    // 'Then' will be registered and queued but the callback executed later asynchronously
+    // 'Then' will be registered and queued but the callback will be executed later asynchronously
     this.promise.then(res => {
       this.promiseContent += res + " <br/>";
       this.promiseContent += `4. Inside 'then', Successfully retrieved 
@@ -54,8 +54,13 @@ export class SingleVsMultiple {
     // Once subcrption triggered only observer call back function will be executed
     this.observable = new Observable(observer => {
       this.observableContent += "1. Inside obervable <br/>";
+
+      // 1st emit
       observer.next("2. This is the 1st message by the Observable.<br/>");
+
+      //2nd emit
       observer.next("3. This is the 2nd message by the Observable.<br/>");
+      
       observer.complete();
     });
 

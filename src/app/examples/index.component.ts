@@ -2,7 +2,11 @@ import { Component, VERSION } from "@angular/core";
 
 @Component({
   selector: "index",
-  templateUrl: "./index.component.html",
-  styleUrls: ["./index.component.css"]
+  template: `
+    <div class="menu">
+      <a routerLink="/eager_lazy">Eager vs Lazy </a>
+      <a routerLink="/single_multiple">Single value vs Multiple values </a>
+    </div>
+  `
 })
 export class IndexComponent {}

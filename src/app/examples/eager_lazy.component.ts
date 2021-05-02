@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Component({
-  selector: "hello",
+  selector: "eagerVsLazy",
   template: `
     
     <h2>Promises</h2>

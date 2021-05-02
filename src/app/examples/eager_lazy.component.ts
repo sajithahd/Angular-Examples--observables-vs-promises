@@ -5,17 +5,15 @@ import { map } from "rxjs/operators";
 @Component({
   selector: "eagerVsLazy",
   template: `
-    
     <h2>Promises</h2>
     <span [innerHtml]="promiseContent"></span>
     <br />
-
     ===============================
     <h2>Observable</h2>
     <span [innerHtml]="observableContent"></span>
   `
 })
-export class EagerVsLazy{
+export class EagerVsLazy {
   promise: Promise<string>;
   promiseContent: string = "";
   observable: Observable<string>;

@@ -7,10 +7,11 @@ import { AppComponent } from "./app.component";
 import { IndexComponent } from "./examples/index.component";
 import { EagerVsLazy } from "./examples/1_eager_lazy.component";
 import { SingleVsMultiple } from "./examples/2_single_multiple.component";
+import { AsyncVsSync } from "./examples/3_async_sync.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule],
-  declarations: [AppComponent, IndexComponent, EagerVsLazy, SingleVsMultiple],
+  declarations: [AppComponent, IndexComponent, EagerVsLazy, SingleVsMultiple, AsyncVsSync],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -61,7 +61,6 @@ export class AsyncVsSync {
   }
 
   observables() {
-    // Once subcrption triggered only observer call back function will be executed
     this.observable = new Observable(observer => {
       observer.next(
         "2. 'WelCome Sj' - This is the message by the observable.<br/>"
@@ -107,6 +106,9 @@ export class AsyncVsSync {
         this.asyncObservableContent += value;
         this.asyncObservableContent +=
           "3. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
+      },
+      complete: () => {
+        this.observableContent += "5. Done with the subscription <br/>";
       }
     });
 

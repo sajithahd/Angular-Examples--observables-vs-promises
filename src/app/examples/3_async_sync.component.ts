@@ -22,7 +22,7 @@ import { map } from "rxjs/operators";
 
     ===============================
 
-    <h3>Sync Observables</h3>
+    <h3>Async Observables</h3>
     <span [innerHtml]="asyncObservableContent"></span>
   `
 })
@@ -89,21 +89,23 @@ export class AsyncVsSync {
 
   async_observables() {
     // Once subcrption triggered only observer call back function will be executed
-    this.observable = new Observable(observer => {
-      observer.next(
-        "2. 'WelCome Sj' - This is the message by the observable.<br/>"
-      );
-      observer.complete();
+    this.asyncObservable = new Observable(observer => {
+      setTimeout(() => {
+        observer.next(
+          "2. 'WelCome Sj' - This is the message by the observable.<br/>"
+        );
+        observer.complete();
+      }, 500);
     });
 
     // This line will be displayed first
-    this.observableContent += "1. Before calling subscribe <br/>";
+    this.asyncObservableContent += "1. Before calling subscribe <br/>";
 
     // Once subscription triggered it will retrun here
-    const subscription = this.observable.subscribe({
+    const subscription = this.asyncObservable.subscribe({
       next: value => {
-        this.observableContent += value;
-        this.observableContent +=
+        this.asyncObservableContent += value;
+        this.asyncObservableContent +=
           "3. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
       }
     });
@@ -111,6 +113,6 @@ export class AsyncVsSync {
     subscription.unsubscribe();
 
     // Observables are synchrones or asynchrones
-    this.observableContent += "4. After subscription block. <br/>";
+    this.asyncObservableContent += "4. After subscription block. <br/>";
   }
 }

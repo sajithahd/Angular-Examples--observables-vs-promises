@@ -69,52 +69,39 @@ export class AsyncVsSync {
     });
 
     // This line will be displayed first
-    this.observableContent += "1. Before calling subscribe <br/>";
+    this.observableContent += "1. Before calling subscribe. <br/>";
 
     // Once subscription triggered it will retrun here
     const subscription = this.observable.subscribe({
       next: value => {
         this.observableContent += value;
-        this.observableContent +=
-          "3. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
       }
     });
 
-    subscription.unsubscribe();
-
     // Observables are synchrones or asynchrones
-    this.observableContent += "4. After subscription block. <br/>";
+    this.observableContent += "3. After subscription block. <br/>";
   }
-
+  
   async_observables() {
     // Once subcrption triggered only observer call back function will be executed
     this.asyncObservable = new Observable(observer => {
       setTimeout(() => {
         observer.next(
-          "2. 'WelCome Sj' - This is the message by the observable.<br/>"
+          "3. 'WelCome Sj' - This is the message by the observable.<br/>"
         );
         observer.complete();
-      }, 500);
+      }, 1000);
     });
 
     // This line will be displayed first
-    this.asyncObservableContent += "1. Before calling subscribe <br/>";
+    this.asyncObservableContent += "1. Before calling subscribe. <br/>";
 
     // Once subscription triggered it will retrun here
-    const subscription = this.asyncObservable.subscribe({
-      next: value => {
-        this.asyncObservableContent += value;
-        this.asyncObservableContent +=
-          "3. Inside 'subscription', Successfully retrieved messages from the Observable. <br/>";
-      },
-      complete: () => {
-        this.observableContent += "5. Done with the subscription <br/>";
-      }
+    const subscription2 = this.asyncObservable.subscribe(value => {
+      this.asyncObservableContent += value;
     });
 
-    subscription.unsubscribe();
-
     // Observables are synchrones or asynchrones
-    this.asyncObservableContent += "4. After subscription block. <br/>";
+    this.asyncObservableContent += "2. After subscription block. <br/>";
   }
 }

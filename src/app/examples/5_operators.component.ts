@@ -15,7 +15,7 @@ import { map, take } from "rxjs/operators";
   `
 })
 export class Operators {
-  observable: Observable<number>;
+  observable: Observable<string>;
   observableContent: string = "";
 
   constructor() {
@@ -24,15 +24,14 @@ export class Operators {
 
   observables() {
     // Operators are useful in transforming streams
-    this.observable = interval(1000)
-    .pipe(
-      take(3),
-      map(v => Date.now())
+    this.observable = interval(1000).pipe(
+      take(5),
+      map(v => new Date(Date.now()).toISOString())
     );
 
     // Once subscription triggered it will retrun here
     const subscription = this.observable.subscribe(value => {
-      this.observableContent += value + '</br>';
+      this.observableContent += value + "</br>";
     });
   }
 

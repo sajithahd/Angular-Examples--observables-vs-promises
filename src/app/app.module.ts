@@ -9,6 +9,7 @@ import { EagerVsLazy } from "./examples/1_eager_lazy.component";
 import { SingleVsMultiple } from "./examples/2_single_multiple.component";
 import { AsyncVsSync } from "./examples/3_async_sync.component";
 import { NotCanxVsCanx } from "./examples/4_not_cancellable_cancellable.component";
+import { Operators } from "./examples/5_operators.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule],
@@ -18,7 +19,8 @@ import { NotCanxVsCanx } from "./examples/4_not_cancellable_cancellable.componen
     EagerVsLazy,
     SingleVsMultiple,
     AsyncVsSync,
-    NotCanxVsCanx
+    NotCanxVsCanx,
+    Operators
   ],
   bootstrap: [AppComponent]
 })

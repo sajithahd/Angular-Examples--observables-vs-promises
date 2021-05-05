@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { interval, Observable } from "rxjs";
+import { map, take } from "rxjs/operators";
 
 @Component({
   selector: "operators",
@@ -15,7 +15,7 @@ import { map } from "rxjs/operators";
   `
 })
 export class Operators {
-  observable: Observable<string>;
+  observable: Observable<number>;
   observableContent: string = "";
 
   constructor() {
@@ -24,26 +24,15 @@ export class Operators {
 
   observables() {
     // Once subcrption triggered only observer call back function will be executed
-    this.observable = new Observable(observer => {
-      setTimeout(() => {
-        observer.next("4. This is the async content.<br/>");
-        observer.complete();
-      }, 1000);
-      observer.next("2. This is the sync content.<br/>");
-    });
-
-    // This line will be displayed first
-    this.observableContent += "1. Before calling subscribe. <br/>";
+    this.observable = interval(1000)
+    .pipe(
+      take(3),
+      map(v => Date.now())
+    );
 
     // Once subscription triggered it will retrun here
     const subscription = this.observable.subscribe(value => {
-      this.observableContent += value;
+      this.observableContent += value + '</br>';
     });
-
-    // cancel the subcrption
-    //subscription.unsubscribe();
-
-    // Observables are synchrones or asynchrones
-    this.observableContent += "3. After subscription block. <br/>";
   }
 }

@@ -23,7 +23,7 @@ export class Operators {
   }
 
   observables() {
-    // Once subcrption triggered only observer call back function will be executed
+    // Operators are useful in transforming streams
     this.observable = interval(1000)
     .pipe(
       take(3),
@@ -35,4 +35,6 @@ export class Operators {
       this.observableContent += value + '</br>';
     });
   }
+
+  // source: https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/observables-and-rxjs/
 }

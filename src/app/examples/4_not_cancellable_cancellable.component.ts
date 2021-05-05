@@ -11,7 +11,7 @@ import { map } from "rxjs/operators";
     <h2>Not Cancellable vs Cancellable</h2>
 
     <h3>Observables</h3>
-    <span [innerHtml]="asyncObservableContent"></span>
+    <span [innerHtml]="observableContent"></span>
   `
 })
 export class NotCanxVsCanx {
@@ -36,9 +36,12 @@ export class NotCanxVsCanx {
     this.observableContent += "1. Before calling subscribe. <br/>";
 
     // Once subscription triggered it will retrun here
-    const subscription2 = this.observable.subscribe(value => {
+    const subscription = this.observable.subscribe(value => {
       this.observableContent += value;
     });
+
+    // cancel the subcrption
+    subscription.unsubscribe();
 
     // Observables are synchrones or asynchrones
     this.observableContent += "3. After subscription block. <br/>";

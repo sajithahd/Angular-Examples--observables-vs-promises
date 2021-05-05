@@ -81,16 +81,19 @@ export class AsyncVsSync {
     // Observables are synchrones or asynchrones
     this.observableContent += "3. After subscription block. <br/>";
   }
-  
+
   async_observables() {
     // Once subcrption triggered only observer call back function will be executed
     this.asyncObservable = new Observable(observer => {
       setTimeout(() => {
         observer.next(
-          "3. 'WelCome Sj' - This is the message by the observable.<br/>"
+          "4. This is the async content.<br/>"
         );
         observer.complete();
       }, 1000);
+      observer.next(
+          "2. This is the sync content.<br/>"
+        );
     });
 
     // This line will be displayed first
@@ -102,6 +105,6 @@ export class AsyncVsSync {
     });
 
     // Observables are synchrones or asynchrones
-    this.asyncObservableContent += "2. After subscription block. <br/>";
+    this.asyncObservableContent += "3. After subscription block. <br/>";
   }
 }

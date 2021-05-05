@@ -41,7 +41,7 @@ export class NotCanxVsCanx {
     });
 
     // cancel the subcrption
-    subscription.unsubscribe();
+    //subscription.unsubscribe();
 
     // Observables are synchrones or asynchrones
     this.observableContent += "3. After subscription block. <br/>";
